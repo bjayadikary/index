@@ -15,6 +15,7 @@ class PoissonModel(LinearModel):
         self.learning_rate = 1e-7
         while self.eps < delta:
             prev_theta = self.theta
+            #Log likelihooo
 
             #Gradient of LL
             gradient =(1 / m) * (y - self.response_fn(x.dot(self.theta))).dot(x)

@@ -8,7 +8,7 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-
+#Logistic Regression
 class LogisticRegression(LinearModel):
     def fit(self, x, y):
         m, n = x.shape
@@ -36,7 +36,6 @@ class LogisticRegression(LinearModel):
         print(f"Final theta : {self.theta}")
 
         return self.theta
-
     def predict(self, x, y = None):
         probabilities = sigmoid(x.dot(self.theta))
 

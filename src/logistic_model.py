@@ -8,7 +8,8 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-#Logistic Regression
+
+# Logistic Regression
 class LogisticRegression(LinearModel):
     def fit(self, x, y):
         m, n = x.shape
@@ -36,13 +37,16 @@ class LogisticRegression(LinearModel):
         print(f"Final theta : {self.theta}")
 
         return self.theta
-    def predict(self, x, y = None):
+
+    def predict(self, x, y=None):
         probabilities = sigmoid(x.dot(self.theta))
 
         # calculate Mean Squared Error
         if y is not None:
-            y_predicted = ( probabilities >= 0.5).astype(np.int)   #np.array([1 if probability > 0.5 else 0 for probability in probabilities])
-            mse = np.mean((y_predicted == y).astype(np.int)) #([1 if y_predicted_value == y_value else 0 for y_predicted_value, y_value in zip(y_predicted, y)])
+            y_predicted = (probabilities >= 0.5).astype(
+                np.int)  # np.array([1 if probability > 0.5 else 0 for probability in probabilities])
+            mse = np.mean((y_predicted == y).astype(
+                np.int))  # ([1 if y_predicted_value == y_value else 0 for y_predicted_value, y_value in zip(y_predicted, y)])
 
             print(f"Logistic Regression performed with {mse} accuracy.")
 
@@ -79,7 +83,7 @@ class LogisticRegression(LinearModel):
         return grad_sum / x.shape[0]
 
 
-def main(train_path, valid_path, save_path, eps = 1e-5, with_gradient_ascent=False):
+def main(train_path, valid_path, save_path, eps=1e-5, with_gradient_ascent=False):
     x_train, y_train = util.load_data(train_path, add_intercept=True)
     if with_gradient_ascent:
         model = LogisticRegression(eps)

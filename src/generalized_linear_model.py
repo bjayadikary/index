@@ -43,9 +43,9 @@ class GLM(LinearModel):
 
     def response_fn(self, x, link_fn):
         if link_fn == 'Log':
-            return np.exp(x)
+            return np.exp(x)  # Inverse of log is exp
         elif link_fn == 'Logit':
-            return 1 / (1 + np.exp(-x))
+            return 1 / (1 + np.exp(-x))     # Inverse of Logit is logistic
         else:
             return x
 
